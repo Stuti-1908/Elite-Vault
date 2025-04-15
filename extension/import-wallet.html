@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Import Wallet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h2>Import Wallet</h2>
+    <form id="importForm">
+        <label for="importType">Import Type:</label>
+        <select id="importType">
+            <option value="privateKey">Private Key</option>
+            <option value="mnemonic">Mnemonic Phrase</option>
+        </select>
+        <textarea id="importValue" placeholder="Enter Private Key or Mnemonic Phrase" required></textarea>
+        <button type="submit">Import</button>
+    </form>
+    <script>
+        document.getElementById("importForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const importType = document.getElementById("importType").value;
+            const importValue = document.getElementById("importValue").value.trim();
+
+            let wallet;
+            if (importType === "privateKey") {
+                wallet = new ethers.Wallet(importValue);
+            } else {
+                wallet = ethers.Wallet.fromPhrase(importValue);
+            }
+
+            localStorage.setItem("walletAddress", wallet.address);
+            localStorage.setItem("privateKey", wallet.privateKey);
+            alert("Wallet Imported Successfully!");
+            window.location.href = "dashboard.html";
+        });
+    </script>
+</body>
+</html>

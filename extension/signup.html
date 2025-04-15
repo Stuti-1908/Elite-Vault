@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="signup-container">
+        <div class="signup-card">
+            <h2>Create Your Wallet</h2>
+            <form id="signupForm">
+                <input type="text" id="username" placeholder="Enter Username" class="input-field" required>
+                <button type="submit" class="primary-button">Generate Wallet</button>
+            </form>
+            <div id="mnemonicContainer" style="display: none;">
+                <h3>Your 12-Word Mnemonic Phrase</h3>
+                <p id="mnemonicPhrase" class="mnemonic-display"></p>
+                <button id="proceedToVerify" class="primary-button">Proceed to Verify</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const username = document.getElementById("username").value;
+
+            const response = await fetch("http://localhost:5000/create-wallet");
+            const data = await response.json();
+
+            localStorage.setItem("mnemonic", data.mnemonic);
+            localStorage.setItem("walletAddress", data.address);
+            localStorage.setItem("privateKey", data.privateKey);
+
+            document.getElementById("mnemonicPhrase").innerText = data.mnemonic;
+            document.getElementById("mnemonicContainer").style.display = "block";
+            document.getElementById("signupForm").style.display = "none";
+        });
+
+        document.getElementById("proceedToVerify").addEventListener("click", () => {
+            window.location.href = "verify-mnemonic.html";
+        });
+    </script>
+</body>
+</html>

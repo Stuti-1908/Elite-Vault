@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h2>Settings</h2>
+    <form id="settingsForm">
+        <label for="currency">Currency:</label>
+        <select id="currency">
+            <option value="usd">USD</option>
+            <option value="eur">EUR</option>
+        </select>
+        <button type="submit">Save</button>
+    </form>
+    <script>
+        document.getElementById("settingsForm").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const currency = document.getElementById("currency").value;
+            localStorage.setItem("currency", currency);
+            alert("Settings Saved!");
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedCurrency = localStorage.getItem("currency") || "usd";
+            document.getElementById("currency").value = savedCurrency;
+        });
+    </script>
+</body>
+</html>

@@ -36,7 +36,9 @@
   
   Stuti Gohil  
   Om Patel N
+  
   Om Patel M
+  
   Ren Patel  
   
   => Huge shoutout to the entire team for making this vision a reality. We learned, built, failed, and succeeded—together.

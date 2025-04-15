@@ -34,7 +34,8 @@
   
   👥 Team Members
   
-  Stuti Gohil  
+  Stuti Gohil
+  
   Om Patel N
   
   Om Patel M

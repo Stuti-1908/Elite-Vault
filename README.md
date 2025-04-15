@@ -21,13 +21,6 @@
    Security   : BIP39 for Mnemonic Generation
    Language   : JavaScript, HTML, CSS
 
-   📸 Screenshots
-  
-  => (Add screenshots of your wallet popup, mnemonic generation, or extension loading screen here)
-  
-
-
-  
   How It Started
   
   We built EliteVault during the Nirma University Hackathon under the  PedalsUp Theme: Custom Wallet Creation. With no prior blockchain experience, we took this opportunity to dive deep into web3 development. 
